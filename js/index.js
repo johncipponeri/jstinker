@@ -37,7 +37,7 @@ $("document").ready(function() {
         
         var encrypted = CryptoJS.AES.encrypt(getSaveContent(), "secret_pass");
         
-        window.location.replace(window.location.protocol  + "//" + window.location.host + "/jstinker/?code=" + encrypted.toString());
+        window.location.replace(window.location.protocol  + "//" + window.location.host + "/?code=" + encrypted.toString());
     });
     
     // TIDYUP Button
