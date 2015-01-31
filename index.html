@@ -179,12 +179,11 @@
                                     <p><strong>Links</strong></p>
                                     For updates please follow my
                                     <a href="http://twitter.com/johncipponeri/" target="_new">tweets</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- /sidebar -->
                 <!-- HTML Editor -->
                 <div class="col-md-4 editorContainer">
                     <div class="editor" id="html-editor"></div>
@@ -199,9 +198,18 @@
                 </div>
                 <!-- Preview -->
                 <div class="col-md-4 editorContainer">
-                    <div class="editor" id="preview">
+                    <iframe class="editor" id="preview" name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0">
+                        #document
+                            <!DOCTYPE html>
+                            <html>
+                                <head>
+                                </head>
+                                
+                                <body>
+                                </body>
+                            </html>
                         <!-- Editor content goes here -->
-                    </div>
+                    </iframe>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

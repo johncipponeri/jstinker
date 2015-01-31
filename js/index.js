@@ -22,7 +22,7 @@ $("document").ready(function() {
     $("#btnRun").click(function(event) {  
         event.preventDefault();
         
-        var preview = $("#preview");
+        var preview = $("#preview").contents().find("body");
         preview.empty();
         
         preview.append(getContent());
