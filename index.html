@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create a new tinker - JSTinker</title>
-    <!-- JSTinker Style -->
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    
     <!-- Latest jQuery from Google CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!-- Crypto JS -->
@@ -16,12 +15,14 @@
     <!-- Ace Editor -->
     <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <!-- JSTinker Scripts -->
-    <script src="js/index.js"></script>
-    <!-- Latest compiled and minified CSS -->
+    <script src="js/jstinker.js"></script>
+    <!-- JSTinker Style -->
+    <link rel="stylesheet" href="css/jstinker.css" type="text/css">
+    <!-- Bootstrap Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- Optional theme -->
+    <!-- Bootstrap Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
+    <!-- Bootstrap Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -215,7 +216,7 @@
         </div><!-- /.container-fluid -->
     </nav>
     
-    <!-- Editor Script -->
+    <!-- Set Editor Modes -->
     <script>
         var htmlEditor = ace.edit("html-editor");
         htmlEditor.setTheme("ace/theme/crimson-editor");
