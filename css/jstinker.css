@@ -15,6 +15,12 @@
     margin-right: 175px;   
 }
 
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
 #sidebar {
     height: 500px;
 }
