@@ -310,8 +310,11 @@
                                             onLoad
                                         <span class="caret"></span>
                                         </button>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu2">
                                             <li role="presentation"><a role="menuitem" tabindex="-1" href="">onLoad</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">onDomReady</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">No wrap - in head</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">No wrap - in body</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -328,7 +331,28 @@
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="panel-body">
-                                    Stuff
+                                    <input type="text" placeholder="Name your Tinker">
+                                    <textarea placeholder="Description"></textarea>
+                                    <input type="checkbox">Normalize css</input>
+                                    <p>Body tag</p>
+                                    <input type="text">
+                                    <p>DTD</p>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="true">
+                                            HTML 5
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu3">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">XHTML 1.0 Strict</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">XHTML 1.0 Transitional</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 5</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 4.01 Strict</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 4.01 Transitional</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML 4.01 Frameset</a></li>
+                                        </ul>
+                                    </div>
+                                    <p>Framework script attribute</p>
+                                    <input type="text" placeholder="ie. data-type=''">
                                 </div>
                             </div>
                         </div>
@@ -343,7 +367,10 @@
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                 <div class="panel-body">
-                                    Stuff
+                                    <input type="text" placeholder="JavaScript/CSS URI">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +385,40 @@
                             </div>
                             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                 <div class="panel-body">
-                                    Stuff
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-expanded="true">
+                                            HTML
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu4">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">HTML</a></li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown" aria-expanded="true">
+                                            CSS
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu5">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">CSS</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">SCSS</a></li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown" aria-expanded="true">
+                                            JavaScript
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu6">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">JavaScript</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">CoffeeScript</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="">JavaScript 1.7</a></li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <p>Results</p>
                                 </div>
                             </div>
                         </div>
