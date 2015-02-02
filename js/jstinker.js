@@ -22,10 +22,23 @@ $("document").ready(function() {
     $("#btnRun").click(function(event) {  
         event.preventDefault();
         
-        var preview = $("#preview").contents().find("body");
-        preview.empty();
+        var previewDoc = window.frames[0].document;
         
-        preview.append(getContent());
+        var css    = ace.edit("css-editor").getSession().getValue();
+        var script = ace.edit("js-editor").getSession().getValue();
+        var html   = ace.edit("html-editor").getSession().getValue();
+        
+        previewDoc.write("<!DOCTYPE html>");
+        previewDoc.write("<html>");
+        previewDoc.write("<head>");
+        previewDoc.write("<style type='text/css'>" + css + "</style>");
+        previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
+        previewDoc.write("</head>");
+        previewDoc.write("<body>");
+        previewDoc.write(html);
+        previewDoc.write("</body>");
+        previewDoc.write("</html>");
+        previewDoc.close();
     });
     
     // Preview code on page load
@@ -61,14 +74,6 @@ $("document").ready(function() {
     });
     
     // HELPER Functions
-    function getContent() {
-        var css    = "<style>"  + ace.edit("css-editor").getSession().getValue() + "</style>";
-        var script = "<script>" + ace.edit("js-editor").getSession().getValue()  + "</script>";
-        var html   =              ace.edit("html-editor").getSession().getValue();
-        
-        return (css + script + html).toString();
-    }
-    
     function getSaveContent() {
         var css    = ace.edit("css-editor").getSession().getValue();
         var script = ace.edit("js-editor").getSession().getValue();
