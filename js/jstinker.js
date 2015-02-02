@@ -2,6 +2,8 @@ $("document").ready(function() {
     // Get code from Save URL
     var code = getUrlVars()["code"];
     
+    var libs = {};
+    
     // List of Frameworks & Extensions
     var frameworks = {
         // jQuery Compat (edge)
@@ -214,12 +216,16 @@ $("document").ready(function() {
         var script = ace.edit("js-editor").getSession().getValue();
         var html   = ace.edit("html-editor").getSession().getValue();
         
+        var dropdownMenu1Sel = $("#dropdownMenu1").parents('.btn-group').find('.dropdown-toggle').text().trim();
+        var lib = frameworks[dropdownMenu1Sel];
         var dropdownMenu2Sel = $("#dropdownMenu2").parents('.btn-group').find('.dropdown-toggle').text().trim();
         
         previewDoc.write("<!DOCTYPE html>");
         previewDoc.write("<html>");
         previewDoc.write("<head>");
         previewDoc.write("<style type='text/css'>" + css + "</style>");
+        if (lib)
+            previewDoc.write("<script src=" + lib + " type='text/javascript'></script>");
         if (dropdownMenu2Sel == "onLoad")
             previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
         //else if (dropdownMenu2Sel == "onDomready")
