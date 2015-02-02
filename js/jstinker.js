@@ -201,7 +201,7 @@ $("document").ready(function() {
         event.preventDefault();
         
         var selText = $(this).text();
-        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText+'<span class="caret"></span>');
+        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
     
     // RUN Button
