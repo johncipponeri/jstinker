@@ -214,14 +214,23 @@ $("document").ready(function() {
         var script = ace.edit("js-editor").getSession().getValue();
         var html   = ace.edit("html-editor").getSession().getValue();
         
+        var dropdownMenu2Sel = $("#dropdownMenu2").parents('.btn-group').find('.dropdown-toggle').text().trim();
+        
         previewDoc.write("<!DOCTYPE html>");
         previewDoc.write("<html>");
         previewDoc.write("<head>");
         previewDoc.write("<style type='text/css'>" + css + "</style>");
-        previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
+        if (dropdownMenu2Sel == "onLoad")
+            previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
+        //else if (dropdownMenu2Sel == "onDomready")
+        //    
+        else if (dropdownMenu2Sel == "No wrap - in head")
+            previewDoc.write("<script type='text/javascript'>" + script + "</script>");
         previewDoc.write("</head>");
         previewDoc.write("<body>");
         previewDoc.write(html);
+        if (dropdownMenu2Sel == "No wrap - in body")
+            previewDoc.write("<script type='text/javascript'>" + script + "</script>");
         previewDoc.write("</body>");
         previewDoc.write("</html>");
         previewDoc.close();
