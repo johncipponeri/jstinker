@@ -6,68 +6,28 @@ $("document").ready(function() {
     
     // List of Frameworks & Extensions
     var frameworks = {
-        // jQuery Compat (edge)
+        // jQuery
         "jQuery Compat (edge)": "http://code.jquery.com/jquery-git.js",
-        "QUnit 1.12.0": "http://code.jquery.com/qunit/qunit-1.12.0.js",
-        "jQuery UI 1.10.3": "http://code.jquery.com/jquery-git.js", //http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery-ui.css
-        "Firebug Lite 1.4.0": "http://cdnjs.cloudflare.com/ajax/libs/firebug-lite/1.4.0/firebug-lite.js",
-        "jQuery Lint (edge)": "http://fiddle.jshell.net/js/lib/jquery.lint.js",
-        // jQuery (edge)
         "jQuery (edge)": "http://code.jquery.com/jquery-compat-git.js",
-        "jQuery UI 1.8.5": "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.js",
-        "QUnit": "http://github.com/jquery/qunit/raw/master/qunit/qunit.js",
-        "Firebug Lite": "https://getfirebug.com/firebug-lite-debug.js",
-        "jQuery UI 1.8.9": "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js",
-        "jQuery Lint": "http://fiddle.jshell.net/js/lib/jquery.lint.js",
-        // jQuery 2.1.0
         "jQuery 2.1.0": "http://code.jquery.com/jquery-2.1.0.js",
-        "Bootstrap 3.2.0": "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", //http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css
-        "Bootstrap 2.3.2": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js", //http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css
-        // jQuery 2.0.2
         "jQuery 2.0.2": "http://code.jquery.com/jquery-2.0.2.js",
-        "Migrate 1.2.1": "http://code.jquery.com/jquery-migrate-1.2.1.js",
-        "jQuery UI 1.10.3": "http://code.jquery.com/ui/1.10.3/jquery-ui.js", //http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css
-        // jQuery 1.10.1
         "jQuery 1.10.1": "http://code.jquery.com/jquery-1.10.1.js",
-        // jQuery 1.9.1
         "jQuery 1.9.1": "http://code.jquery.com/jquery-1.9.1.js",
-        "Migrate 1.1.0": "http://code.jquery.com/jquery-migrate-1.1.0.js",
-        "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/jquery-ui.js", //http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
-        // jQuery 1.8.3
         "jQuery 1.8.3": "http://code.jquery.com/jquery-1.8.3.js",
-        "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/jquery-ui.js", //http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css
-        // jQuery 1.7.2
         "jQuery 1.7.2": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js",
-        "jQuery UI 1.8.18": "http://code.jquery.com/ui/1.8.18/jquery-ui.min.js",
-        "jQuery Lint (13 June '11)": "http://fiddle.jshell.net/js/lib/jquery.lint-11-06.js",
-        "Bootstrap 2.0.2 (js only)": "http://fiddle.jshell.net/js/lib/bootstrap-2.0.2.js",
-        // jQuery 1.6.4
         "jQuery 1.6.4": "http://code.jquery.com/jquery-1.6.4.js",
-        // Prototype 1.7.1
+        // Prototype
         "Prototype 1.7.1": "https://ajax.googleapis.com/ajax/libs/prototype/1.7.1/prototype.js",
-        "script.aculo.us 1.9": "http://fiddle.jshell.net/js/lib/scriptaculous-js-1.9.0/src/scriptaculous.js",
-        "Scripty 2.0b1": "http://fiddle.jshell.net/js/lib/s2-b.js",
-        // Prototype 1.6.1.0
         "Prototype 1.6.1.0": "http://ajax.googleapis.com/ajax/libs/prototype/1.6.1.0/prototype.js",
-        "script.aculo.us 1.8.3": "http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js",
-        "Scripty2 2.0.0-a5": "http://fiddle.jshell.net/js/lib/s2.js",
-        // YUI 3.17.2
+        // YUI
         "YUI 3.17.2": "http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js",
-        // YUI 3.16.0
         "YUI 3.16.0": "http://fiddle.jshell.net/_display/yui.yahooapis.com/3.16.0/build/yui/yui-min.js",
-        // YUI 3.14.0
         "YUI 3.14.0": "http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js",
-        // YUI 3.10.1
         "YUI 3.10.1": "http://yui.yahooapis.com/3.10.1/build/yui/yui.js",
-        // YUI 3.8.0
         "YUI 3.8.0": "http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js",
-        // YUI 3.7.3
         "YUI 3.7.3": "http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js",
-        // YUI 3.6.0
         "YUI 3.6.0": "http://yui.yahooapis.com/3.6.0/build/yui/yui.js",
-        // YUI 3.5.0
         "YUI 3.5.0": "http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js",
-        // YUI 2.8.0r4
         "YUI 2.8.0r4": "http://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/yuiloader/yuiloader-min.js",
         // Dojo
         "Dojo Nightly": "http://archive.dojotoolkit.org/nightly/dojotoolkit/dojo/dojo.js",
@@ -87,7 +47,6 @@ $("document").ready(function() {
         "ExtJS 4.1.1": "http://cdn.sencha.io/ext-4.1.1-gpl/ext-all.js",
         "ExtJS 4.1.0": "http://fiddle.jshell.net/js/lib/extjs-4.1.0/ext-all.js",
         "ExtJS 3.4.0": "http://cdn.sencha.io/ext-3.4.0/adapter/ext/ext-base.js", // + Next
-        "Ext All Debug": "http://cdn.sencha.io/ext-3.4.0/ext-all-debug.js",
         "ExtJS 3.1.0": "http://ajax.googleapis.com/ajax/libs/ext-core/3.1.0/ext-core-debug.js",
         // Raphael
         "Raphael 2.1.0": "http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js",
@@ -118,17 +77,10 @@ $("document").ready(function() {
         "AngularJS 1.1.1": "http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js",
         // Ember
         "Ember 1.3.1": "http://http//builds.emberjs.com/tags/v1.3.1/ember.prod.js",
-        // Underscore 1.4.4
+        // Underscore
         "Underscore 1.4.4": "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js",
-        "Backbone LocalStorage": "http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js",
-        "Backbone ModelBinder": "http://cdnjs.cloudflare.com/ajax/libs/backbone.modelbinder/0.1.3/Backbone.ModelBinder-min.js",
-        "Backbone 1.0": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js",
-        // Underscore 1.4.3
         "Underscore 1.4.3": "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js",
-        "Backbone 0.9.10": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js",
-        // Underscore 1.3.3
         "Underscore 1.3.3": "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js",
-        "Backbone 0.9.2": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js",
         // Bonsai
         "Bonsai 0.4.1": "http://cdnjs.cloudflare.com/ajax/libs/bonsai/0.4.1/bonsai.min.js",
         // KineticJS
@@ -154,15 +106,9 @@ $("document").ready(function() {
         "Paper.js 0.22": "http://cdnjs.cloudflare.com/ajax/libs/paper.js/0.22/paper.js",
         // React
         "React 0.9.0": "http://cdnjs.cloudflare.com/ajax/libs/react/0.9.0/react.js",
-        // React 0.8.0
         "React 0.8.0": "http://cdnjs.cloudflare.com/ajax/libs/react/0.8.0/react.js",
-        "JSXTransformer.js 0.8.0": "http://cdnjs.cloudflare.com/ajax/libs/react/0.8.0/JSXTransformer.js",
-        // React 0.4.0
         "React 0.4.0": "http://fb.me/react-0.4.0.js",
-        "JSXTransformer.js 0.4.0": "http://fb.me/JSXTransformer-0.4.0.js",
-        // React 0.3.2
         "React 0.3.2": "http://dragon.ak.fbcdn.net/hphotos-ak-ash3/851559_337624843031740_50442_n.js",
-        "JSXTransformer.js 0.3.2": "http://dragon.ak.fbcdn.net/hphotos-ak-prn1/851582_580035725361422_42012_n.js",
         // svg.js
         "svg.js 0.x (latest)": "http://s3-eu-west-1.amazonaws.com/svgjs/svg.js",
         // Minified
@@ -173,13 +119,93 @@ $("document").ready(function() {
         "Lo-Dash 2.2.1": "http://cdn.jsdelivr.net/lodash/2.1.0/lodash.compat.js",
         // Brick
         "Brick edge": "http://mozbrick.github.io/dist/brick.js",
-        "Brick CSS": "http://mozbrick.github.io/dist/brick.css", //http://mozilla.github.io/brick/dist/brick.css
         // RactiveJS
         "RactiveJS Latest": "http://cdn.ractivejs.org/latest/ractive.js",
         "RactiveJS Edge": "http://cdn.ractivejs.org/edge/ractive.js",
         // Vue
         "Vue (edge)": "http://vuejs.org/js/vue.js",
         "Vue 0.11.0": "http://cdnjs.cloudflare.com/ajax/libs/vue/0.11.0/vue.min.js"
+    };
+    
+    var frameworks_css = {
+        "jQuery UI 1.10.3": "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery-ui.css",
+        "Bootstrap 3.2.0": "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css",
+        "Bootstrap 2.3.0": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css",
+        "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"
+    };
+    
+    var frameworks_extras = {
+        "jQuery Compat (edge)": {
+            "QUnit 1.12.0": "http://code.jquery.com/qunit/qunit-1.12.0.js",
+            "jQuery UI 1.10.3": "http://code.jquery.com/jquery-git.js",
+            "Firebug Lite 1.4.0": "http://cdnjs.cloudflare.com/ajax/libs/firebug-lite/1.4.0/firebug-lite.js",
+            "jQuery Lint (edge)": "http://fiddle.jshell.net/js/lib/jquery.lint.js"
+        },
+        "jQuery (edge)": {
+            "jQuery UI 1.8.5": "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.js",
+            "QUnit": "http://github.com/jquery/qunit/raw/master/qunit/qunit.js",
+            "Firebug Lite": "https://getfirebug.com/firebug-lite-debug.js",
+            "jQuery UI 1.8.9": "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js",
+            "jQuery Lint": "http://fiddle.jshell.net/js/lib/jquery.lint.js"
+        },
+        "jQuery 2.1.0": {
+            "Bootstrap 3.2.0": "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", 
+            "Bootstrap 2.3.2": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"
+        },
+        "jQuery 2.0.2": {
+            "Migrate 1.2.1": "http://code.jquery.com/jquery-migrate-1.2.1.js",
+            "jQuery UI 1.10.3": "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
+        },
+        "jQuery 1.9.1": {
+            "Migrate 1.1.0": "http://code.jquery.com/jquery-migrate-1.1.0.js",
+            "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/jquery-ui.js"
+        },
+        "jQuery 1.8.3": {
+            "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/jquery-ui.js"
+        },
+        "jQuery 1.7.2": {
+            "jQuery UI 1.8.18": "http://code.jquery.com/ui/1.8.18/jquery-ui.min.js",
+            "jQuery Lint (13 June '11)": "http://fiddle.jshell.net/js/lib/jquery.lint-11-06.js",
+            "Bootstrap 2.0.2 (js only)": "http://fiddle.jshell.net/js/lib/bootstrap-2.0.2.js",  
+        },
+        "Prototype 1.7.1": {
+            "script.aculo.us 1.9": "http://fiddle.jshell.net/js/lib/scriptaculous-js-1.9.0/src/scriptaculous.js",
+            "Scripty 2.0b1": "http://fiddle.jshell.net/js/lib/s2-b.js"
+        },
+        "Prototype 1.6.1.0": {
+            "script.aculo.us 1.8.3": "http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js",
+            "Scripty2 2.0.0-a5": "http://fiddle.jshell.net/js/lib/s2.js"
+        },
+        "ExtJS 3.4.0": {
+            "Ext All Debug": "http://cdn.sencha.io/ext-3.4.0/ext-all-debug.js"  
+        },
+        "Underscore 1.4.4": {
+            "Backbone LocalStorage": "http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js",
+            "Backbone ModelBinder": "http://cdnjs.cloudflare.com/ajax/libs/backbone.modelbinder/0.1.3/Backbone.ModelBinder-min.js",
+            "Backbone 1.0": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone.js"  
+        },
+        "Undersocre 1.4.3": {
+            "Backbone 0.9.10": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js",
+            "Backbone LocalStorage": "http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js",
+            "Backbone ModelBinder": "http://cdnjs.cloudflare.com/ajax/libs/backbone.modelbinder/0.1.3/Backbone.ModelBinder-min.js"
+        },
+        "Underscore 1.3.3": {
+            "Backbone 0.9.2": "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js",
+            "Backbone LocalStorage": "http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js",
+            "Backbone ModelBinder": "http://cdnjs.cloudflare.com/ajax/libs/backbone.modelbinder/0.1.3/Backbone.ModelBinder-min.js"
+        },
+        "React 0.8.0": {
+            "JSXTransformer.js 0.8.0": "http://cdnjs.cloudflare.com/ajax/libs/react/0.8.0/JSXTransformer.js"  
+        },
+        "React 0.4.0": {
+            "JSXTransformer.js 0.4.0": "http://fb.me/JSXTransformer-0.4.0.js"  
+        },
+        "React 0.3.2": {
+            "JSXTransformer.js 0.3.2": "http://dragon.ak.fbcdn.net/hphotos-ak-prn1/851582_580035725361422_42012_n.js"  
+        },
+        "Brick edge": {
+            "Brick CSS": "http://mozbrick.github.io/dist/brick.css"  
+        }
     };
     
     if (code) {
@@ -202,8 +228,17 @@ $("document").ready(function() {
     $(".dropdown-menu li a").click(function(event){
         event.preventDefault();
         
+        $(".extra").remove();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
         var selText = $(this).text();
-        $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+        
+        var lib_extras = frameworks_extras[selText];
+        
+        for (extra in lib_extras)
+            dropdown.append("<div class='extra'><input type='checkbox'>" + extra + "</input></div>");
     });
     
     // RUN Button
@@ -218,11 +253,14 @@ $("document").ready(function() {
         
         var dropdownMenu1Sel = $("#dropdownMenu1").parents('.btn-group').find('.dropdown-toggle').text().trim();
         var lib = frameworks[dropdownMenu1Sel];
+        var lib_css = frameworks_css[dropdownMenu1Sel];
         var dropdownMenu2Sel = $("#dropdownMenu2").parents('.btn-group').find('.dropdown-toggle').text().trim();
         
         previewDoc.write("<!DOCTYPE html>");
         previewDoc.write("<html>");
         previewDoc.write("<head>");
+        if (lib_css)
+            previewDoc.write("<style type='text/css' src=" + lib_css + "></style>");
         previewDoc.write("<style type='text/css'>" + css + "</style>");
         if (lib)
             previewDoc.write("<script src=" + lib + " type='text/javascript'></script>");
