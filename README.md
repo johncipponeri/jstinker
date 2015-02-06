@@ -4,9 +4,6 @@ An open source clone of [JSFiddle](http://jsfiddle.net/), this project was made 
 
 ## Features
 
-* Offline "saving"
-
-#### Mimicked Features
 * HTML/CSS/JS Editors
 * Preview
 * Syntax checks
@@ -35,8 +32,6 @@ JSBeautifier ([link](http://jsbeautifier.org/))
 Bootstrap 3.3.2 ([link](http://getbootstrap.com/))
 
 JQuery 2.1.3 ([link](http://blog.jquery.com/2014/12/18/jquery-1-11-2-and-2-1-3-released-safari-fail-safe-edition/))
-
-CryptoJS 3.1.2 ([link](https://code.google.com/p/crypto-js/))
 
 #### Inspiration
 JSFiddle ([link](http://jsfiddle.net/))

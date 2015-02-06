@@ -1,7 +1,4 @@
 $("document").ready(function() {
-    // Get code from Save URL
-    var code = getUrlVars()["code"];
-    
     var libs = {};
     
     // List of Frameworks & Extensions
@@ -208,22 +205,6 @@ $("document").ready(function() {
         }
     };
     
-    if (code) {
-        var decrypted = CryptoJS.AES.decrypt(code, "secret_pass");
-        var newCode = decrypted.toString(CryptoJS.enc.Utf8);
-        var content = newCode.split("%%");
-        
-        var css = content[0];
-        var script = content[1];
-        var html = content[2];
-        
-        setContent(css, script, html);
-        
-        var modalSave = $("#modalSave");
-        modalSave.find(".modal-body").html(window.location.href);
-        modalSave.modal('show');
-    }
-    
     // Frameworks & Extensions Dropdown
     $(".dropdown-menu li a").click(function(event){
         event.preventDefault();
@@ -283,15 +264,6 @@ $("document").ready(function() {
     // Preview code on page load
     $("#btnRun").click();
     
-    // SAVE Button
-    $("#btnSave").click(function(event) {
-        event.preventDefault();
-        
-        var encrypted = CryptoJS.AES.encrypt(getSaveContent(), "secret_pass");
-        
-        window.location.replace(window.location.protocol  + "//" + window.location.host + "/?code=" + encrypted.toString());
-    });
-    
     // TIDYUP Button
     $("#btnTidyUp").click(function(event) {
         event.preventDefault();
@@ -311,33 +283,4 @@ $("document").ready(function() {
         
         ace.edit("js-editor").getSession().setValue(js2);
     });
-    
-    // HELPER Functions
-    function getSaveContent() {
-        var css    = ace.edit("css-editor").getSession().getValue();
-        var script = ace.edit("js-editor").getSession().getValue();
-        var html   = ace.edit("html-editor").getSession().getValue();
-        
-        return (css + "%%" + script + "%%" + html).toString();
-    }
-    
-    function setContent(css, script, html) {
-        ace.edit("css-editor").getSession().setValue(css);
-        ace.edit("js-editor").getSession().setValue(script);
-        ace.edit("html-editor").getSession().setValue(html);
-    }
-    
-    // Read a page's GET URL variables and return them as an associative array.
-    function getUrlVars() {
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        
-        for(var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        
-        return vars;
-    }
 });
