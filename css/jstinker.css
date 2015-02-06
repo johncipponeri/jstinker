@@ -26,14 +26,13 @@ body {
 
 .editorContainer {
     width: 49%;
-    height: 50%;
     float: left;
     margin-right: 5px;
     margin-bottom: 5px;
 }
 
 .editor {
-    height: 300px;
+    height: 400px;
     width: 100%;
     border: 1px #cecece solid;
 }
