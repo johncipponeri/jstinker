@@ -238,7 +238,7 @@ $("document").ready(function() {
         var lib_extras = frameworks_extras[selText];
         
         for (extra in lib_extras)
-            dropdown.append("<div class='extra'><input type='checkbox'>" + extra + "</input></div>");
+            dropdown.append("<div class='extra checkbox'><label><input type='checkbox'></input><span class='chk_lbl'>" + extra + "</span></label></div>");
     });
     
     // RUN Button
