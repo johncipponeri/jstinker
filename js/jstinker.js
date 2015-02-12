@@ -206,7 +206,7 @@ $("document").ready(function() {
     };
     
     // Frameworks & Extensions Dropdown
-    $(".dropdown-menu li a").click(function(event){
+    $("#dropdownMenu1 li a").click(function(event){
         event.preventDefault();
         
         $(".extra").remove();
@@ -220,6 +220,56 @@ $("document").ready(function() {
         
         for (extra in lib_extras)
             dropdown.append("<div class='extra checkbox'><label><input type='checkbox'></input><span class='chk_lbl'>" + extra + "</span></label></div>");
+    });
+    
+    // Script Injection Dropdown
+    $("#dropdownMenu2 li a").click(function(event){
+        event.preventDefault();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
+        var selText = $(this).text();
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
+    
+    // Doctype Dropdown
+    $("#dropdownMenu3 li a").click(function(event){
+        event.preventDefault();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
+        var selText = $(this).text();
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
+    
+    // HTML Dropdown
+    $("#dropdownMenu4 li a").click(function(event){
+        event.preventDefault();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
+        var selText = $(this).text();
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
+    
+    // CSS Dropdown
+    $("#dropdownMenu5 li a").click(function(event){
+        event.preventDefault();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
+        var selText = $(this).text();
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+    });
+    
+    // Javascript Dropdown
+    $("#dropdownMenu6 li a").click(function(event){
+        event.preventDefault();
+        
+        var dropdown = $(this).parents('.btn-group');
+        
+        var selText = $(this).text();
+        dropdown.find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
     
     // RUN Button
