@@ -127,7 +127,7 @@ $("document").ready(function() {
     var frameworks_css = {
         "jQuery UI 1.10.3": "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery-ui.css",
         "Bootstrap 3.2.0": "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css",
-        "Bootstrap 2.3.0": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css",
+        "Bootstrap 2.3.2": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css",
         "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"
     };
     
