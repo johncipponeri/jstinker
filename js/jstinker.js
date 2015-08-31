@@ -284,17 +284,26 @@ $("document").ready(function() {
         
         var dropdownMenu1Sel = $("#dropdownMenu1").parents('.btn-group').find('.dropdown-toggle').text().trim();
         var lib = frameworks[dropdownMenu1Sel];
-        var lib_css = frameworks_css[dropdownMenu1Sel];
+        var extra_libs = []
+        $("#dropdownMenu1").parents('.btn-group').find('input:checked').parent().each( 
+            function(){ extra_libs.push($(this).text().trim());}
+        );
         var dropdownMenu2Sel = $("#dropdownMenu2").parents('.btn-group').find('.dropdown-toggle').text().trim();
         
         previewDoc.write("<!DOCTYPE html>");
         previewDoc.write("<html>");
         previewDoc.write("<head>");
-        if (lib_css)
-            previewDoc.write("<style type='text/css' src=" + lib_css + "></style>");
         previewDoc.write("<style type='text/css'>" + css + "</style>");
         if (lib)
             previewDoc.write("<script src=" + lib + " type='text/javascript'></script>");
+        for (var i in extra_libs)
+        {
+            if (extra_libs[i] in frameworks_css)
+                previewDoc.write("<style type='text/css' src=" + frameworks_css[extra_libs[i]] + "></style>");
+            
+            if (lib in frameworks_extras)
+                previewDoc.write("<script src=" + frameworks_extras[lib][extra_libs[i]] + " type='text/javascript'></script>");
+        }
         if (dropdownMenu2Sel == "onLoad")
             previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
         //else if (dropdownMenu2Sel == "onDomready")
