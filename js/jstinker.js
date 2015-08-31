@@ -127,7 +127,7 @@ $("document").ready(function() {
     var frameworks_css = {
         "jQuery UI 1.10.3": "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery-ui.css",
         "Bootstrap 3.2.0": "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css",
-        "Bootstrap 2.3.0": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css",
+        "Bootstrap 2.3.2": "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css",
         "jQuery UI 1.9.2": "http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"
     };
     
@@ -284,17 +284,26 @@ $("document").ready(function() {
         
         var dropdownMenu1Sel = $("#dropdownMenu1").parents('.btn-group').find('.dropdown-toggle').text().trim();
         var lib = frameworks[dropdownMenu1Sel];
-        var lib_css = frameworks_css[dropdownMenu1Sel];
+        var extra_libs = []
+        $("#dropdownMenu1").parents('.btn-group').find('input:checked').parent().each( 
+            function(){ extra_libs.push($(this).text().trim());}
+        );
         var dropdownMenu2Sel = $("#dropdownMenu2").parents('.btn-group').find('.dropdown-toggle').text().trim();
         
         previewDoc.write("<!DOCTYPE html>");
         previewDoc.write("<html>");
         previewDoc.write("<head>");
-        if (lib_css)
-            previewDoc.write("<style type='text/css' src=" + lib_css + "></style>");
         previewDoc.write("<style type='text/css'>" + css + "</style>");
         if (lib)
             previewDoc.write("<script src=" + lib + " type='text/javascript'></script>");
+        for (var i in extra_libs)
+        {
+            if (extra_libs[i] in frameworks_css)
+                previewDoc.write("<style type='text/css' src=" + frameworks_css[extra_libs[i]] + "></style>");
+            
+            if (lib in frameworks_extras)
+                previewDoc.write("<script src=" + frameworks_extras[lib][extra_libs[i]] + " type='text/javascript'></script>");
+        }
         if (dropdownMenu2Sel == "onLoad")
             previewDoc.write("<script type='text/javascript'>window.onload = function() {" + script + "}</script>");
         //else if (dropdownMenu2Sel == "onDomready")
