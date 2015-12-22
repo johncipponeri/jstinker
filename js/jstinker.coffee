@@ -194,6 +194,8 @@ $('document').ready ->
     selText = $(this).text()
     if selText == "CoffeeScript"
       language = "cs"
+    else if selText == "CJSX"
+      language = "cjsx"
     else
       language = "js"
     console.log language
@@ -210,6 +212,33 @@ $('document').ready ->
       script = CoffeeScript.compile script,
         bare: "on"
       console.log script
+    else if language == "cjsx"
+
+
+      sourceMapComment = (originalCJSX, transformedCJSX, javascript, sourceMap, fileName) ->
+        sourceMap.sources = [
+          fileName
+          fileName + '_transformed'
+          fileName + '_compiled'
+        ]
+        sourceMap.sourcesContent = [
+          originalCJSX
+          transformedCJSX
+          javascript
+        ]
+        base64 = btoa(JSON.stringify(sourceMap))
+        dataUri = 'data:application/json;charset=utf-8;base64,' + base64
+        '\n//@ sourceMappingURL=' + dataUri
+
+      processCJSX = (originalCJSX) ->
+        coffee = coffeeReactTransform(originalCJSX)
+        compilerResult = CoffeeScript.compile(coffee, sourceMap: true)
+        javascript = compilerResult.js
+        v3SourceMap = JSON.parse(compilerResult.v3SourceMap)
+        eval javascript + sourceMapComment(originalCJSX, coffee, javascript, v3SourceMap, 'cjsx' + i)
+        return
+
+      script = processCJSX(script)
     html = ace.edit('html-editor').getSession().getValue()
     dropdownMenu1Sel = $('#dropdownMenu1').parents('.btn-group').find('.dropdown-toggle').text().trim()
     lib = frameworks[dropdownMenu1Sel]
