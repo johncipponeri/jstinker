@@ -1,7 +1,13 @@
 $('document').ready ->
   libs = {}
   # List of Frameworks & Extensions
-  frameworks = 
+  frameworks =
+    'jQuery 2.1.0(LOCAL)': '/js/local/jquery-2.1.0.js'
+    'jQuery 1.11.3(LOCAL)': '/js/local/jquery-1.11.3.js'
+    'fabricJS 1.5.0 (LOCAL)': '/js/local/fabric.js'
+    'intercom (LOCAL)': '/js/local/intercom.js'
+    'lovefield(LOCAL)': '/js/local/lovefield.js'
+    'CamanJS(LOCAL)': '/js/local/caman.full.min.js'
     'jQuery Compat (edge)': 'http://code.jquery.com/jquery-git.js'
     'jQuery (edge)': 'http://code.jquery.com/jquery-compat-git.js'
     'jQuery 2.1.0': 'http://code.jquery.com/jquery-2.1.0.js'
