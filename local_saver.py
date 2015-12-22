@@ -9,6 +9,13 @@ def serve_js(filename):
 def serve_css(filename):
     return bottle.static_file(filename, root='css')
 
+@bottle.get("/fonts/<filename:path>")
+def serve_fonts(filename):
+    return bottle.static_file(filename, root='fonts')
+@bottle.get('/favicon.ico')
+def puticon():
+	return bottle.static_file('favicon.ico', root='.')
+
 @bottle.get('/')
 def index():
     raw_html = open('index.html', 'rt').read()
