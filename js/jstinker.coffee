@@ -147,6 +147,8 @@ $('document').ready ->
     'React 0.3.2': 'JSXTransformer.js 0.3.2': 'http://dragon.ak.fbcdn.net/hphotos-ak-prn1/851582_580035725361422_42012_n.js'
     'Brick edge': 'Brick CSS': 'http://mozbrick.github.io/dist/brick.css'
   # Frameworks & Extensions Dropdown
+  language = "js"
+
   $('#dropdownMenu1 li a').click (event) ->
     event.preventDefault()
     $('.extra').remove()
@@ -190,6 +192,11 @@ $('document').ready ->
     event.preventDefault()
     dropdown = $(this).parents('.btn-group')
     selText = $(this).text()
+    if selText == "CoffeeScript"
+      language = "cs"
+    else
+      language = "js"
+    console.log language
     dropdown.find('.dropdown-toggle').html selText + ' <span class="caret"></span>'
     return
   # RUN Button
@@ -198,6 +205,11 @@ $('document').ready ->
     previewDoc = window.frames[0].document
     css = ace.edit('css-editor').getSession().getValue()
     script = ace.edit('js-editor').getSession().getValue()
+    if language == "cs"
+      console.log "converting ..."
+      script = CoffeeScript.compile script,
+        bare: "on"
+      console.log script
     html = ace.edit('html-editor').getSession().getValue()
     dropdownMenu1Sel = $('#dropdownMenu1').parents('.btn-group').find('.dropdown-toggle').text().trim()
     lib = frameworks[dropdownMenu1Sel]
