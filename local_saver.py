@@ -49,8 +49,8 @@ def puticon():
 @bottle.get('/list')
 def list_files():
     projects = os.listdir(filesdir)
-    print projects
     projects = filter(lambda x: x.endswith(".json"), projects)
+    print projects
     return Answer(projects=projects)
 
 

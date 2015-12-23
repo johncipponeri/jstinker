@@ -213,7 +213,7 @@ $('document').ready ->
         bare: "on"
       console.log script
     else if language == "cjsx"
-
+      console.log ""
       #console.log createScript
 
     html = ace.edit('html-editor').getSession().getValue()
@@ -268,4 +268,10 @@ $('document').ready ->
     event.preventDefault()
     TogetherJS this
     false
+
+  localapi = new LocalApi window.location.host, window.location.port
+  $(document).trigger "localapiINITED", [localapi]
+  console.log
+
+
   return
