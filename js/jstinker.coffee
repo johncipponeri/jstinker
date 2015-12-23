@@ -1,4 +1,5 @@
 $('document').ready ->
+  codeloader = new CodeLoader htmlEditor, cssEditor, jsEditor
   libs = {}
   # List of Frameworks & Extensions
   frameworks =
@@ -193,11 +194,11 @@ $('document').ready ->
     dropdown = $(this).parents('.btn-group')
     selText = $(this).text()
     if selText == "CoffeeScript"
-      language = "cs"
+      codeloader.setLanguage("cs")
     else if selText == "CJSX"
-      language = "cjsx"
+      codeloader.setLanguage("cjsx")
     else
-      language = "js"
+      codeloader.setLanguage("js")
     console.log language
     dropdown.find('.dropdown-toggle').html selText + ' <span class="caret"></span>'
     return
@@ -207,12 +208,12 @@ $('document').ready ->
     previewDoc = window.frames[0].document
     css = ace.edit('css-editor').getSession().getValue()
     script = ace.edit('js-editor').getSession().getValue()
-    if language == "cs"
+    if codeloader.getLanguage("cs")
       console.log "converting ..."
       script = CoffeeScript.compile script,
         bare: "on"
       console.log script
-    else if language == "cjsx"
+    else if codeloader.getLanguage("cjsx")
       console.log ""
       #console.log createScript
 
@@ -270,7 +271,7 @@ $('document').ready ->
     false
 
   localapi = new LocalApi window.location.host, window.location.port
-  codeloader = new CodeLoader
+
   api = localapi: localapi, codeloader: codeloader
   $(document).on "MyAppInited", (event, callback) ->
     callback(api)

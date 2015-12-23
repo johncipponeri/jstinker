@@ -64,15 +64,15 @@ def create_project():
     name = bottle.request.get('name', None)
     html = bottle.request.get('html', None)
     css = bottle.request.get('css', None)
-    script = bottle.request.get('script', None)
-    script_type = bottle.request.get('script_type', "js")
+    script = bottle.request.get('code', None)
+    codeType = bottle.request.get('codeType', "js")
     if not name or name:
         return Error(message="Not name parameter")
     data = dict(
         name="name",
         html=[html],
         css=[css],
-        script=[dict(script_type=script_type, script=script)],
+        script=[dict(codeType=codeType, script=script)],
         history=[now()]
     )
     json.dump(data, os.path.join(filesdir, name+".json"))

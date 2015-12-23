@@ -1,5 +1,5 @@
 class CodeLoader
-  constructor: (@htmlEditor, @cssEditor, @codeEditor)->
+  constructor: (@htmlEditor, @cssEditor, @codeEditor, @language)->
 
   getHTML: ()=>
     codeLoader = @
@@ -26,4 +26,42 @@ class CodeLoader
   setCode: (code)=>
     codeLoader = @
     codeLoader.codeEditor.getSession().setValue(code)
+    return
+
+  getState: ()=>
+    codeLoader = @
+
+    html: codeLoader.getHTML()
+    css: codeLoader.getCSS()
+    code: codeLoader.getCode()
+    codeType: codeLoader.getLanguage()
+
+  setState: (state)=>
+    codeLoader = @
+
+    codeLoader.setHTML state.html
+    codeLoader.setCSS state.css
+    codeLoader.setCode state.code
+    return
+
+  isEmpty: ()=>
+    codeLoader = @
+    state = codeLoader.getState()
+    if state.html == "" and state.css == "" and state.code == ""
+      return true
+    false
+
+  cleanup: ()=>
+    codeLoader = @
+    codeLoader.setState
+      html: ""
+      css: ""
+      code: ""
+    return
+
+  getLanguage: ()=>
+    @language
+
+  setLanguage: (language)=>
+    @language = language
     return
