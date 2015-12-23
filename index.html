@@ -15,7 +15,6 @@
     <script src="/js/react-with-addons-0.14.0.js"></script>
     <script src="/js/react-dom-0.14.0.js"></script>
     <script src="/js/jsxtransformer.js"></script>
-    <script src="/js/cjsx-in-browser.js"></script>
     <!-- Beautify Web - HTML, CSS, JS -->
     <script src="js/beautify-web/beautify-html.js"></script>
     <script src="js/beautify-web/beautify-css.js"></script>
@@ -24,7 +23,8 @@
     <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
     <!-- Together -->
-    <script src="https://togetherjs.com/togetherjs-min.js"></script>
+    <!--<script src="https://togetherjs.com/togetherjs-min.js"></script>-->
+    <script src="/js/togetherhs-min.js"></script>
     <!-- JSTinker Scripts -->
     <script src="js/jstinker.js"></script>
     <!-- Bootstrap Latest compiled and minified CSS -->
@@ -485,6 +485,7 @@
                     </div>
                 </div>
             </div>
+            <div class="panel panel-default" id="testpanel"></div>
         </div>
     </div><!-- /sidebar -->
 
@@ -540,6 +541,25 @@
             enableBasicAutocompletion: true
         });
     </script>
+    <script type="text/cjsx">
+        MyApp = React.createClass
+            getInitialState: ->
+                woo: 'nah'
+
+            doSomething: ->
+                @setState woo: 'yeah'
+
+            render: ->
+                <div>
+                  <h3>Hello, world!</h3>
+                  <div>Woo {@state.woo}</div>
+                  <button onClick={@doSomething}>Do something awesome</button>
+                </div>
+
+        React.renderComponent <MyApp />, document.getElementById "testpanel"
+    </script>
+    <script type="text/javascript" src="http://fb.me/react-0.11.1.js"></script>
+    <script type="text/javascript" src="/js/cjsx-in-browser.js"></script>
     
 </body>
 </html>
