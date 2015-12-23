@@ -1,5 +1,5 @@
 $('document').ready ->
-  codeloader = new CodeLoader htmlEditor, cssEditor, jsEditor
+  codeloader = new CodeLoader htmlEditor, cssEditor, jsEditor, "js"
   libs = {}
   # List of Frameworks & Extensions
   frameworks =

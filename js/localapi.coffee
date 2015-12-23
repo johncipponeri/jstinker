@@ -25,6 +25,7 @@ class LocalApi
     $.ajax
       url: "/project"
       method: 'put'
+      type: 'put'
       dataType: "json"
       data:
         name: name

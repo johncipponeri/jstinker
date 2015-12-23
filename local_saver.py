@@ -61,21 +61,23 @@ def get_project(name):
 
 @bottle.put('/project')
 def create_project():
-    name = bottle.request.get('name', None)
-    html = bottle.request.get('html', None)
-    css = bottle.request.get('css', None)
-    script = bottle.request.get('code', None)
-    codeType = bottle.request.get('codeType', "js")
-    if not name or name:
+    print bottle.request.POST.allitems()
+    name = bottle.request.POST.get('name', "aaa")
+    html = bottle.request.POST.get('html', None)
+    css = bottle.request.POST.get('css', None)
+    script = bottle.request.POST.get('code', None)
+    codeType = bottle.request.POST.get('codeType', "js")
+    if not name or name == "aaa":
         return Error(message="Not name parameter")
     data = dict(
         name="name",
         html=[html],
         css=[css],
         script=[dict(codeType=codeType, script=script)],
-        history=[now()]
+        history=[now().isoformat()]
     )
-    json.dump(data, os.path.join(filesdir, name+".json"))
+    print data
+    json.dump(data, open(os.path.join(filesdir, name+".json"), 'wt'))
     return Answer(data=data)
 
 @bottle.get('/')
@@ -86,7 +88,7 @@ def index():
 
 def main():
     setfilesdir(".")
-    bottle.run()
+    bottle.run(reloader=True)
 
 
 if __name__ == "__main__":
