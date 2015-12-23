@@ -270,8 +270,25 @@ $('document').ready ->
     false
 
   localapi = new LocalApi window.location.host, window.location.port
-  $(document).trigger "localapiINITED", [localapi]
-  console.log
+  $(document).on "MyAppInited", (event, callback) ->
+    callback(localapi)
 
+  scripts = document.querySelectorAll "script[type='text/cjsx']"
+  console.log "Script: #{scripts.length}, #{scripts.item(0).src} , #{scripts.item(0)}"
+  for script in scripts
+    path = script.src.split('/js/')
+    path = '/js/'+path.slice(1)
+    console.log "Processing script #{path}"
+    $.get(path)
+    .done (script)->
+      console.log "script was got"
+      processCJSX script
+      return
+    .fail (jqxhr, settings, exception)->
+      console.log "#{jqxhr}, #{settings} #{exception}"
+
+  #script = document.createElement 'script'
+  #script.src = "/js/cjsx-in-browser.js"
+  #document.body.appendChild script
 
   return

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create a new tinker - JSTinker</title>
-    
+    <script type="text/cjsx" src="/js/projects.cjsx"></script>
     <!-- Latest jQuery from Google CDN -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     <script src="/js/jquery.min.js"></script>
@@ -41,6 +41,13 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <script>
+        document.addEventListener("processCJSXLoaded", function(event){
+            console.log("arrived processCJSX");
+            console.log(event);
+            processCJSX = event.detail;
+        }, false);
+    </script>
     <nav class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -542,45 +549,7 @@
             enableBasicAutocompletion: true
         });
     </script>
-    <script type="text/cjsx">
-        MyApp = React.createClass
-            getInitialState: ->
-                myapp = @
-                $(document).on "localapiINITED", (event, api)->
-                    console.log api
-                    myapp.setLocalApi(api)
-                    return
-                woo: 'nah'
-                projects: []
-
-            setLocalApi: (api)->
-                myapp = @
-                api.list (projects)->
-                    console.log projects
-                    if projects.status == "Ok"
-                        myapp.setState
-                            api: api
-                            projects: projects.projects
-
-            doSomething: ->
-                @setState woo: 'yeah'
-
-            render: ->
-                <div>
-                  <h3>Hello, world!</h3>
-                  <div>Woo {@state.woo}</div>
-                  <button onClick={@doSomething}>Do something awesome</button>
-                    <ul>
-                      {for item in @state.projects
-                        <li>{item}</li>
-                      }
-                    </ul>
-                </div>
-
-        React.renderComponent <MyApp />, document.getElementById "testpanel"
-    </script>
     <script type="text/javascript" src="/js/react-0.11.1.js"></script>
-    <script type="text/javascript" src="/js/cjsx-in-browser.js"></script>
-    
+    <script src="/js/cjsx-in-browser.js"></script>
 </body>
 </html>

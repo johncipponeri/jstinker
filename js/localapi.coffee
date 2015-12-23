@@ -21,4 +21,12 @@ class LocalApi
           return
       data
 
+    get: (name, callback)=>
+      localApi = @
+      $.ajax
+        dataType: "json"
+        url: "/project/#{name}"
+        success: (data)->
+          callback data
+
 

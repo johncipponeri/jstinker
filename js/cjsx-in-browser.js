@@ -32,6 +32,8 @@
 
   module.exports['processCJSX'] = processCJSX;
 
+  document.dispatchEvent(new CustomEvent('processCJSXLoaded', {detail: processCJSX}));
+
 })();
 
 },{"coffee-react-transform":"/Users/danfox/cjsx-in-browser/node_modules/coffee-react-transform/index.js","coffee-script":"/Users/danfox/cjsx-in-browser/node_modules/coffee-script/lib/coffee-script/coffee-script.js"}],"/Users/danfox/cjsx-in-browser/node_modules/coffee-react-transform/index.js":[function(require,module,exports){
