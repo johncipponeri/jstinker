@@ -270,8 +270,10 @@ $('document').ready ->
     false
 
   localapi = new LocalApi window.location.host, window.location.port
+  codeloader = new CodeLoader
+  api = localapi: localapi, codeloader: codeloader
   $(document).on "MyAppInited", (event, callback) ->
-    callback(localapi)
+    callback(api)
 
   scripts = document.querySelectorAll "script[type='text/cjsx']"
   console.log "Script: #{scripts.length}, #{scripts.item(0).src} , #{scripts.item(0)}"

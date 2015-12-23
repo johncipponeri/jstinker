@@ -20,28 +20,37 @@ Project = React.createClass
 MyApp = React.createClass
     getInitialState: ->
         myapp = @
-        $(document).trigger "MyAppInited", [myapp.setLocalApi]
+        $(document).trigger "MyAppInited", [myapp.setApi]
 
-        woo: 'nah'
+        current: "untitled"
         projects: []
 
-    setLocalApi: (api)->
+    setApi: (api)->
         myapp = @
-        api.list (projects)->
-            console.log projects
-            if projects.status == "Ok"
+        myapp.setState
+            localapi: api.localapi
+            codeloader: api.codeloader
+            projects: api.localapi.list (projects)->
                 myapp.setState
-                    api: api
-                    projects: projects.projects
+                    projects: projects
 
-    doSomething: ->
-        @setState woo: 'yeah'
+    new: ()->
+        return
+
+    fork: ()->
+        return
+
+    save: ()->
+        return
 
     render: ->
         <div>
-          <h3>Hello, world!</h3>
-          <div>Woo {@state.woo}</div>
-          <button onClick={@doSomething}>Do something awesome</button>
+            Project:<br />
+            <input type="text" />
+            <button>New</button> <br />
+            <button>Fork</button> <br />
+            <button>Save</button> <br />
+
             <ul>
               {for item in @state.projects
                 <li><Project name={item} api={@api}/></li>
