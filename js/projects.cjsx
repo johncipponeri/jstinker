@@ -21,6 +21,8 @@ MyApp = React.createClass
     getInitialState: ->
         myapp = @
 
+        myapp.update()
+
         current: "untitled"
         projects: []
 
@@ -34,7 +36,9 @@ MyApp = React.createClass
 
     update: ()->
         myapp = @
+        console.log "updating projects list ..."
         myapp.props.localapi.list (projects)->
+            console.log "projects were gotten...#{projects.length}"
             myapp.setState
                 projects: projects
 

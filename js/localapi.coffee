@@ -8,7 +8,9 @@ class LocalApi
       url: "/list"
       dataType: "json"
       success: (data)->
-        callback data
+        console.log "Get data from list request #{data}"
+        console.log data
+        callback data.projects
     []
 
   get: (name, callback)=>
