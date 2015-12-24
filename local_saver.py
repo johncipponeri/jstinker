@@ -50,13 +50,14 @@ def puticon():
 def list_files():
     projects = os.listdir(filesdir)
     projects = filter(lambda x: x.endswith(".json"), projects)
+    projects = map(lambda x: x[:-5], projects)
     print projects
     return Answer(projects=projects)
 
 
 @bottle.get('/project/<name>')
 def get_project(name):
-    answer = json.load(os.path.join(filesdir, name))
+    answer = json.load(open(os.path.join(filesdir, name+'.json')))
     return Answer(data=answer)
 
 @bottle.put('/project')

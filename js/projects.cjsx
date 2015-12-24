@@ -1,16 +1,12 @@
 Project = React.createClass
     getInitialState: ->
-        closed: true
+        {}
 
     handleClick: ->
         console.log "clicked"
-        if @state.closed == true
-            #load project ....
-            @setState
-                closed: false
-        else
-            @setState
-                closed: true
+        @props.opener()
+        return
+
 
     render: ->
         <div>
@@ -29,10 +25,42 @@ MyApp = React.createClass
     new: ()->
         myapp = @
         if not myapp.props.codeloader.isEmpty()
-            myapp.save()
+            $.confirm
+                title: "save project changes?"
+                confirm: ()->
+                    myapp.save()
+                    return
+
         myapp.props.codeloader.cleanup()
         myapp.setState
             current: "untitled"
+
+    open: (name)->
+        myapp = @
+        console.log "Opening ... #{name}"
+        myapp.save()
+        myapp.props.localapi.get name, (data)->
+            console.log "Data is :"
+            console.log data
+            lastIndex = data.history.length-1
+            newState = {
+                html: data.html[lastIndex]
+                css: data.css[lastIndex]
+                code: data.script[lastIndex].script
+            }
+            console.log newState
+            myapp.props.codeloader.setState newState
+            myapp.setState
+                current: name
+            console.log "was set"
+            return
+        return
+
+    getOpener: (name)->
+        myapp = @
+        ()->
+            myapp.open(name)
+            return
 
     update: ()->
         myapp = @
@@ -41,8 +69,19 @@ MyApp = React.createClass
             console.log "projects were gotten...#{projects.length}"
             myapp.setState
                 projects: projects
+        []
 
     fork: ()->
+        myapp = @
+        name = prompt "Forking project", "Enter new name"
+        state = myapp.props.codeloader.getState()
+        myapp.props.localapi.put name, state, (answer)->
+            console.log answer
+            if answer.status == "Ok"
+                myapp.setState
+                    current: name
+                    projects: myapp.update()
+
         return
 
     save: ()->
@@ -51,9 +90,20 @@ MyApp = React.createClass
         state = myapp.props.codeloader.getState()
         console.log state
         name = myapp.state.current
+        if name == "untitled"
+            $.confirm
+                title: "project name was not set"
+                content: "Keep the project name untitled ?"
+                confirm: ()->
+                    myapp.props.localapi.put name, state, (answer)->
+                        console.log answer
+                        myapp.update()
+                        return
+            return
         myapp.props.localapi.put name, state, (answer)->
             console.log answer
-        myapp.update()
+            myapp.update()
+            return
         return
 
     onNameEdit: (event)->
@@ -66,13 +116,13 @@ MyApp = React.createClass
         <div>
             Project:<br />
             <input type="text" value={myapp.state.current} onChange={myapp.onNameEdit}/>
-            <button onClick={myapp.new}>New</button> <br />
-            <button onClick={myapp.fork}>Fork</button> <br />
+            <button onClick={myapp.new}>New</button>
+            <button onClick={myapp.fork}>Fork</button>
             <button onClick={myapp.save}>Save</button> <br />
 
             <ul>
               {for item in @state.projects
-                <li><Project name={item} api={@api}/></li>
+                <li><Project name={item} opener={myapp.getOpener(item)}/></li>
               }
             </ul>
         </div>

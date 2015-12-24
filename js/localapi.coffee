@@ -20,7 +20,9 @@ class LocalApi
       dataType: "json"
       url: "/project/#{name}"
       success: (data)->
-        callback data
+        console.log "Get data for project #{name}"
+        console.log data
+        callback data.data
 
   put: (name, state, callback)=>
     localApi = @
