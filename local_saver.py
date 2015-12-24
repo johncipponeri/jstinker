@@ -71,15 +71,33 @@ def create_project():
     if not name or name == "aaa":
         return Error(message="Not name parameter")
     data = dict(
-        name="name",
         html=[html],
         css=[css],
         script=[dict(codeType=codeType, script=script)],
         history=[now().isoformat()]
     )
     print data
-    json.dump(data, open(os.path.join(filesdir, name+".json"), 'wt'))
-    return Answer(data=data)
+    if os.path.exists(os.path.join(filesdir, name+".json")):
+        print "exists..."
+        olddata = json.load(open(os.path.join(filesdir, name+".json")))
+    else:
+        olddata = dict(
+            html=[],
+            css=[],
+            script=[],
+            history=[]
+        )
+    print olddata
+    result = dict(
+        name=name,
+        html=olddata['html']+data['html'],
+        css=olddata['css']+data['css'],
+        script=olddata['script']+data['script'],
+        history=olddata['history']+data['history']
+    )
+    print result
+    json.dump(result, open(os.path.join(filesdir, name+".json"), 'wt'))
+    return Answer(data=result)
 
 @bottle.get('/')
 def index():

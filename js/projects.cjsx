@@ -1,17 +1,49 @@
 Project = React.createClass
     getInitialState: ->
-        {}
+        indexes: @getIndexes()
+        opened: false
+
+    getIndexes: ->
+        project = @
+        @props.localapi.get @props.name, (data)->
+            project.setState
+                indexes: data.history
+        []
 
     handleClick: ->
         console.log "clicked"
-        @props.opener()
+        project = @
+        if not project.state.opened
+            @props.opener()
+            project.setState
+                opened: true
+        else
+            project.setState
+                opened: false
         return
 
+    getIndexOpener: (index)->
+        project = @
+        ()->
+            project.props.opener(index)
+            return
 
     render: ->
         <div>
             <button onClick={@handleClick}>{@props.name}</button>
+            {if @state.opened == true
+                <ul>
+                    {for indexValue, index in @state.indexes
+                        <li>
+                            <button onClick={@getIndexOpener(index)}>
+                                {indexValue}
+                            </button>
+                        </li>
+                    }
+                </ul>
+            }
         </div>
+
 
 MyApp = React.createClass
     getInitialState: ->
@@ -35,14 +67,14 @@ MyApp = React.createClass
         myapp.setState
             current: "untitled"
 
-    open: (name)->
+    open: (name, lastIndex)->
         myapp = @
         console.log "Opening ... #{name}"
-        myapp.save()
+        #myapp.save()
         myapp.props.localapi.get name, (data)->
             console.log "Data is :"
             console.log data
-            lastIndex = data.history.length-1
+            lastIndex ?= data.history.length-1
             newState = {
                 html: data.html[lastIndex]
                 css: data.css[lastIndex]
@@ -58,8 +90,8 @@ MyApp = React.createClass
 
     getOpener: (name)->
         myapp = @
-        ()->
-            myapp.open(name)
+        (lastIndex)->
+            myapp.open(name, lastIndex)
             return
 
     update: ()->
@@ -122,7 +154,12 @@ MyApp = React.createClass
 
             <ul>
               {for item in @state.projects
-                <li><Project name={item} opener={myapp.getOpener(item)}/></li>
+                <li><Project
+                    name={item}
+                    localapi={@props.localapi}
+                    codeloader={@props.codeloader}
+                    opener={myapp.getOpener(item)}
+                /></li>
               }
             </ul>
         </div>
