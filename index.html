@@ -8,6 +8,8 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery-confirm.js"></script>
+
+    <script src="/js/dropbox-datastores-1.2-latest.js"></script>
     <!-- Crypto JS -->
     <!--<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>-->
     <script src="/js/aes.js"></script>
@@ -101,6 +103,8 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="">intercom (LOCAL)</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="">lovefield(LOCAL)</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="">CamanJS(LOCAL)</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="">DropboxDatastoreApi(LOCAL)</a></li>
+
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="">jQuery Compat (edge)</a></li>
 
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="">jQuery (edge)</a></li>
@@ -518,7 +522,7 @@
             </div>
             <!-- Preview -->
             <div class="editorContainer">
-                <iframe class="editor" id="preview" name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin" frameborder="0">
+                <iframe class="editor" id="preview" name="result" sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-pointer-lock" frameborder="0">
                     #document
                 </iframe>
             </div>

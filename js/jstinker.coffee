@@ -9,6 +9,7 @@ $('document').ready ->
     'intercom (LOCAL)': '/js/local/intercom.js'
     'lovefield(LOCAL)': '/js/local/lovefield.js'
     'CamanJS(LOCAL)': '/js/local/caman.full.min.js'
+    'DropboxDatastoreApi(LOCAL)': '/js/dropbox-datastores-1.2-latest.js'
     'jQuery Compat (edge)': 'http://code.jquery.com/jquery-git.js'
     'jQuery (edge)': 'http://code.jquery.com/jquery-compat-git.js'
     'jQuery 2.1.0': 'http://code.jquery.com/jquery-2.1.0.js'
@@ -293,5 +294,24 @@ $('document').ready ->
   #script = document.createElement 'script'
   #script.src = "/js/cjsx-in-browser.js"
   #document.body.appendChild script
+
+  dbclient = new Dropbox.Client
+    key: "1kj721jed8kz15x"
+  window.dbclient = dbclient
+  dbclient.authenticate interactive: true, (error)->
+    console.log error
+
+  console.log dbclient.isAuthenticated()
+  dsm = dbclient.getDatastoreManager()
+  dsm.openDefaultDatastore (error, datastore)->
+    if error
+      console.log "Error while get DS manager #{error}"
+    if datastore
+      console.log "Datastore #{datastore}"
+      projectsTable = datastore.getTable "projectsTable"
+      console.log "projectsTable #{projectsTable}"
+      projectsTable.insert
+        name: "test"
+        data: new Date()
 
   return
