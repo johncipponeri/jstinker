@@ -6,9 +6,21 @@ $('document').ready ->
     frameworks = data.local
 
     appendItem = (element, key)->
-      element.append "<li role='presentation'><a role='menuitem' tabindex='-1' href=''>#{key}</a></li>"
+      element.append """<li><label class="checkbox">
+            <input type="checkbox" value="#{key}"/>#{key}</label></li>"""
+
+    getKeys = (element) ->
+      results = []
+      element.find("input").map ()->
+        if @checked == true
+          console.log "pushing #{@} #{@value}"
+          results.push @value
+      results
 
     dropDownElement = $("ul#dropdownMenu1")
+
+    dropDownElement.click (e)->
+      e.stopPropagation()
 
     for key, value of frameworks
       appendItem dropDownElement, key
@@ -92,8 +104,8 @@ $('document').ready ->
 
       html = ace.edit('html-editor').getSession().getValue()
       dropdownMenu1Sel = $('#dropdownMenu1').parents('.btn-group').find('.dropdown-toggle').text().trim()
-      lib = frameworks[dropdownMenu1Sel]
-      console.log "lib = #{lib}"
+      libs = getKeys(dropDownElement)
+      console.log "libs = #{libs}"
       console.log "dropdownMenu1Sel = #{dropdownMenu1Sel}"
       extra_libs = []
       $('#dropdownMenu1').parents('.btn-group').find('input:checked').parent().each ->
@@ -104,8 +116,10 @@ $('document').ready ->
       previewDoc.write '<html>'
       previewDoc.write '<head>'
       previewDoc.write '<style type=\'text/css\'>' + css + '</style>'
-      if lib
-        previewDoc.write '<script src=' + lib + ' type=\'text/javascript\'></script>'
+      if libs
+        for lib in libs
+          console.log frameworks[lib]
+          previewDoc.write '<script src=' + frameworks[lib] + ' type=\'text/javascript\'></script>'
       for i of extra_libs
         if extra_libs[i] of frameworks_css
           previewDoc.write '<style type=\'text/css\' src=' + frameworks_css[extra_libs[i]] + '></style>'
