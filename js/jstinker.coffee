@@ -4,8 +4,19 @@ $('document').ready ->
   $.getJSON "/data/scripts.json", (data)->
     console.log data
     frameworks = data.local
+
+    appendItem = (element, key)->
+      element.append "<li role='presentation'><a role='menuitem' tabindex='-1' href=''>#{key}</a></li>"
+
+    dropDownElement = $("ul#dropdownMenu1")
+
+    for key, value of frameworks
+      appendItem dropDownElement, key
+
     for key, value of data.frameworks
       frameworks[key] = value
+      appendItem dropDownElement, key
+
     frameworks_css = data.frameworks_css
     frameworks_extras = data.frameworks_extras
 
