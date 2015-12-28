@@ -42,6 +42,10 @@ def serve_css(filename):
 def serve_fonts(filename):
     return bottle.static_file(filename, root='fonts')
 
+@bottle.get("/data/<filename:path>")
+def serve_data(filename):
+    return bottle.static_file(filename, root='data')
+
 @bottle.get('/favicon.ico')
 def puticon():
 	return bottle.static_file('favicon.ico', root='.')
