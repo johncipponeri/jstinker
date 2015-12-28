@@ -10,6 +10,7 @@ $('document').ready ->
     'lovefield(LOCAL)': '/js/local/lovefield.js'
     'CamanJS(LOCAL)': '/js/local/caman.full.min.js'
     'DropboxDatastoreApi(LOCAL)': '/js/dropbox-datastores-1.2-latest.js'
+    'sandblaster.js(LOCAL)': '/js/sandblaster.js'
     'jQuery Compat (edge)': 'http://code.jquery.com/jquery-git.js'
     'jQuery (edge)': 'http://code.jquery.com/jquery-compat-git.js'
     'jQuery 2.1.0': 'http://code.jquery.com/jquery-2.1.0.js'
