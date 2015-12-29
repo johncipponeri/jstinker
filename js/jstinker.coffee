@@ -161,45 +161,42 @@ $('document').ready ->
 
     localapi = new LocalApi window.location.host, window.location.port
 
-    api = localapi: localapi, codeloader: codeloader
-    $(document).on "MyAppInited", (event, callback) ->
-      callback(api)
-
-    scripts = document.querySelectorAll "script[type='text/cjsx']"
-    console.log "Script: #{scripts.length}, #{scripts.item(0).src} , #{scripts.item(0)}"
-    for script in scripts
-      path = script.src.split('/js/')
-      path = '/js/'+path.slice(1)
-      console.log "Processing script #{path}"
-      $.get(path)
-      .done (script)->
-        console.log "script was got"
-        processCJSX script
-        return
-      .fail (jqxhr, settings, exception)->
-        console.log "#{jqxhr}, #{settings} #{exception}"
-
-    #script = document.createElement 'script'
-    #script.src = "/js/cjsx-in-browser.js"
-    #document.body.appendChild script
-
     dbclient = new Dropbox.Client
       key: "1kj721jed8kz15x"
     window.dbclient = dbclient
     dbclient.authenticate interactive: true, (error)->
       console.log error
 
+    executeProjectsManager = (hasDropBox, datastore)->
+      api = localapi: localapi, codeloader: codeloader, hasDropBox: hasDropBox, dropboxapi: new DropBoxApi datastore
+      $(document).on "MyAppInited", (event, callback) ->
+        console.log "calling callback with api #{api}"
+        console.log api
+        callback(api)
+
+      scripts = document.querySelectorAll "script[type='text/cjsx']"
+      console.log "Script: #{scripts.length}, #{scripts.item(0).src} , #{scripts.item(0)}"
+      for script in scripts
+        path = script.src.split('/js/')
+        path = '/js/'+path.slice(1)
+        console.log "Processing script #{path}"
+        $.get(path)
+        .done (script)->
+          console.log "script was got"
+          processCJSX script
+          return
+        .fail (jqxhr, settings, exception)->
+          console.log "#{jqxhr}, #{settings} #{exception}"
+
     console.log dbclient.isAuthenticated()
     dsm = dbclient.getDatastoreManager()
     dsm.openDefaultDatastore (error, datastore)->
+
       if error
         console.log "Error while get DS manager #{error}"
+        executeProjectsManager false, null
       if datastore
         console.log "Datastore #{datastore}"
-        projectsTable = datastore.getTable "projectsTable"
-        console.log "projectsTable #{projectsTable}"
-        projectsTable.insert
-          name: "test"
-          data: new Date()
+        executeProjectsManager true, datastore
 
     return

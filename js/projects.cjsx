@@ -44,6 +44,17 @@ Project = React.createClass
             }
         </div>
 
+DropBoxProject = React.createClass
+
+    selectHandler: ->
+        dropBoxProject = @
+        dropBoxProject.props.opener()
+
+    render: ->
+        dropBoxProject = @
+        <div>
+            <button onClick={dropBoxProject.selectHandler}>{dropBoxProject.props.name}</button>
+        </div>
 
 MyApp = React.createClass
     getInitialState: ->
@@ -53,6 +64,7 @@ MyApp = React.createClass
 
         current: "untitled"
         projects: []
+        dropboxprojects: []
 
     new: ()->
         myapp = @
@@ -101,6 +113,13 @@ MyApp = React.createClass
             console.log "projects were gotten...#{projects.length}"
             myapp.setState
                 projects: projects
+        if myapp.props.hasDropBox == true
+            console.log "getting dropbox projects"
+            myapp.props.dropboxapi.list (projects)->
+                console.log "dbprojects were gotten ... #{projects.length}"
+                console.log projects
+                myapp.setState
+                    dropboxprojects: projects
         []
 
     fork: ()->
@@ -138,6 +157,30 @@ MyApp = React.createClass
             return
         return
 
+    saveToDropBox: ()->
+        console.log "Saving to DropBox ..."
+        myapp = @
+        state = myapp.props.codeloader.getState()
+        name = myapp.state.current
+        if name == "untitled"
+            alert "Error - need to name a project"
+            return
+        myapp.props.dropboxapi.put name, state, (answer)->
+            console.log answer
+            myapp.update()
+            return
+        return
+
+    getDropBoxOpener: (name)->
+        console.log "Opening dropbox project #{name}"
+        myapp = @
+        ()->
+            myapp.new()
+            state = myapp.props.dropboxapi.get name
+            myapp.props.codeloader.setState state
+            myapp.setState
+                current: name
+
     onNameEdit: (event)->
         myapp = @
         myapp.setState
@@ -150,20 +193,27 @@ MyApp = React.createClass
             <input type="text" value={myapp.state.current} onChange={myapp.onNameEdit}/>
             <button onClick={myapp.new}>New</button>
             <button onClick={myapp.fork}>Fork</button>
-            <button onClick={myapp.save}>Save</button> <br />
-
+            <button onClick={myapp.save}>Save</button>
+            {if myapp.props.hasDropBox == true
+                <button onClick={myapp.saveToDropBox}>Save to DropBox</button>
+            }
+            <br/>
             <ul>
-              {for item in @state.projects
+              {for item in myapp.state.projects
                 <li><Project
                     name={item}
-                    localapi={@props.localapi}
-                    codeloader={@props.codeloader}
+                    localapi={myapp.props.localapi}
+                    codeloader={myapp.props.codeloader}
                     opener={myapp.getOpener(item)}
                 /></li>
+              }
+              {if myapp.props.hasDropBox
+                  for item in myapp.state.dropboxprojects
+                        <li><DropBoxProject name={item} opener={myapp.getDropBoxOpener(item)}/></li>
               }
             </ul>
         </div>
 
 $(document).trigger "MyAppInited", [(api)=>
-    React.renderComponent <MyApp localapi={api.localapi} codeloader={api.codeloader}/>, document.getElementById "testpanel"
+    React.renderComponent <MyApp localapi={api.localapi} codeloader={api.codeloader} hasDropBox={api.hasDropBox} dropboxapi={api.dropboxapi}/>, document.getElementById "testpanel"
 ]
