@@ -19,6 +19,8 @@
     <script src="https://togetherjs.com/togetherjs-min.js"></script>
     <!-- JSTinker Scripts -->
     <script src="js/jstinker.js"></script>
+    <!-- Dark Mode Script -->
+    <script src="js/darkMode.js"></script>
     <!-- Bootstrap Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- Bootstrap Optional theme -->
@@ -28,7 +30,7 @@
     <!-- Bootstrap Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body onload='switchTheme()'>
     <nav class="navbar navbar-default">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -329,6 +331,11 @@
                                 <input type="checkbox"></input><span class="chk_lbl">Normalize css</span>
                             </label>
                         </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id='dark-theme' onchange="switchTheme()"></input><span class="chk_lbl">Dark Mode</span>
+                            </label>
+                        </div>
                         <p>Body tag</p>
                         <input type="text">
                         <p>DTD</p>
@@ -474,17 +481,17 @@
         <div class="top">
             <!-- HTML Editor -->
             <div class="editorContainer">
-                <div class="editor" id="html-editor"></div>
+                <div class="editor code-editor" id="html-editor"></div>
             </div>
             <!-- CSS EDitor -->
             <div class="editorContainer">
-                <div class="editor" id="css-editor"></div>
+                <div class="editor code-editor" id="css-editor"></div>
             </div>
         </div>
         <div class="bottom">
             <!-- JS Editor -->
             <div class="editorContainer">
-                <div class="editor" id="js-editor"></div>
+                <div class="editor code-editor" id="js-editor"></div>
             </div>
             <!-- Preview -->
             <div class="editorContainer">

@@ -1,0 +1,55 @@
+.code-editor {
+    background-color: #26292C;
+}
+.editorContainer .editor .ace_gutter {
+    background-color: #484B4E;
+    color: #DFDFDF;
+}
+.ace_content .ace_layer .ace_cursor {
+    color: white;
+}
+.editorContainer .editor .ace_gutter-active-line {
+    background-color: #484B4E00
+}
+.ace_text-layer .ace_line .ace_xml-pe {
+    color: #CFCFCF;
+}
+.ace_text-layer .ace_line .ace_punctuation, .ace_text-layer .ace_line .ace_text {
+    color: white;
+}
+.ace_text-layer .ace_line .ace_tag-name {
+    color: #f0193d;
+}
+.ace_text-layer .ace_line .ace_string {
+    color: #EDB230;
+}
+.ace_text-layer .ace_line .ace_attribute-name {
+    color: #58BC82;
+}
+.ace_text-layer .ace_line .ace_keyword {
+    color: #f0193d;
+}
+.ace_text-layer .ace_line .ace_type {
+    color: #36c0f7;
+}
+.ace_text-layer .ace_line .ace_paren, .ace_text-layer .ace_line .ace_identifier {
+    color: white;
+}
+.ace_text-layer .ace_line .ace_constant {
+    color: #b047ec;
+}
+.ace-tm .ace_entity.ace_name.ace_function {
+    color: #58BC82 !important;
+}
+.ace-tm .ace_support.ace_function {
+    color: #58BC82 !important;
+}
+.ace_content .ace_text-layer .ace_line .ace_parameter {
+    color: #EDB230;
+}
+.ace_text-layer .ace_line .ace_variable {
+    color: rgb(119, 224, 238);
+}
+.ace_line {
+    color: white;
+}
